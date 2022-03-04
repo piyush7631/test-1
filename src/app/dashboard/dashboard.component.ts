@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   projectCost: number = 0;
   currentExpenditure: number = 0;
   availableFunds: number = 0;
+  clients: any = []
 
   constructor() { }
 
@@ -29,6 +30,12 @@ export class DashboardComponent implements OnInit {
     this.projectCost = 2341233;
     this.currentExpenditure = 97532;
     this.availableFunds = 59876;
+    this.clients = [
+      'ABC Technology',
+      'XYZ Infotech',
+      'MNO Industries'
+    ]
+
   }
 
 }
