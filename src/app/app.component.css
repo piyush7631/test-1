@@ -11,3 +11,9 @@
   background-color: #5c249c;
   color: white;
 }
+
+.link-active {
+  color: #5c249c !important;
+  text-decoration: underline;
+  font-weight: bold;
+}
