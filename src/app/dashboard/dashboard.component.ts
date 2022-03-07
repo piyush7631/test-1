@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  today: any;
+
   designation: string = '';
   username: string = '';
   noOfTeamMembers: number = 0;
@@ -26,6 +28,8 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.today = new Date();
+
     this.designation = 'Team Leader';
     this.username = 'Tom Smith';
     this.noOfTeamMembers = 57;
