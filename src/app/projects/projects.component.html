@@ -15,6 +15,7 @@
         <th>Project Name</th>
         <th>Date of Start</th>
         <th>Team Size</th>
+        <th>Actions</th>
       </thead>
       <tbody>
         <tr *ngFor="let project of projects; index as i">
@@ -24,13 +25,14 @@
           <td>{{ project.teamSize }}</td>
           <td>
             <button
-              class="btn btn-sm btn-info m-2"
+              class="btn btn-sm btn-warning m-2"
               data-toggle="modal"
               data-target="#editProjectModal"
               (click)="onEditClicked($event, i)"
             >
               Edit
             </button>
+            <button class="btn btn-sm btn-danger m-2">Delete</button>
           </td>
         </tr>
         <tr></tr>
