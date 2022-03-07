@@ -101,4 +101,30 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  onProjectChange(event: any) {
+    let projectName: string = event.target.innerHTML;
+    projectName = projectName.trim();
+
+    if (projectName == 'Project A') {
+      this.projectCost = 2341233;
+      this.currentExpenditure = 97532;
+      this.availableFunds = 59876;
+    }
+    if (projectName == 'Project B') {
+      this.projectCost = 2541233;
+      this.currentExpenditure = 96532;
+      this.availableFunds = 46876;
+    }
+    if (projectName == 'Project C') {
+      this.projectCost = 7741233;
+      this.currentExpenditure = 75532;
+      this.availableFunds = 66876;
+    }
+    if (projectName == 'Project D') {
+      this.projectCost = 3451233;
+      this.currentExpenditure = 123432;
+      this.availableFunds = 65876;
+    }
+  }
+
 }

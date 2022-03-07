@@ -91,9 +91,11 @@
               </button>
               <div class="dropdown-menu">
                 <a
-                  href=""
+                  href="#"
                   class="dropdown-item"
                   *ngFor="let project of projects"
+                  onclick="return false"
+                  (click)="onProjectChange($event)"
                 >
                   {{ project }}
                 </a>
@@ -193,7 +195,7 @@
               </h2>
             </div>
 
-            <div id="cardbody1" data-parent="#accordion1" class="collapse show">
+            <div id="cardbody1" data-parent="#accordion1" class="collapse">
               <div class="card-body">
                 <table class="table">
                   <thead>
