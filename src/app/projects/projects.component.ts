@@ -10,6 +10,7 @@ import { ProjectsService } from './projects.service';
 export class ProjectsComponent implements OnInit {
 
   projects: Project[] = []
+  newProject: Project = new Project();
   constructor(private service: ProjectsService) { }
 
   ngOnInit(): void {
@@ -23,6 +24,25 @@ export class ProjectsComponent implements OnInit {
         (error) => {
           console.log(error)
         }
+      )
+  }
+
+  onSave() {
+    this.service.createProject(this.newProject)
+      .subscribe(
+        (response) => {
+          //Adding new project to the table
+          let createdProject: Project = response;
+          this.projects.push(createdProject)
+
+          //Clearing the field
+          this.newProject.projectID = 0;
+          this.newProject.projectName = null;
+          this.newProject.dateOfStart = null;
+          this.newProject.teamSize = 0;
+
+        },
+        (error) => { console.log(error) }
       )
   }
 

@@ -14,4 +14,8 @@ export class ProjectsService {
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.url);
   }
+
+  createProject(project: Project): Observable<Project> {
+    return this.http.post<Project>(this.url, project);
+  }
 }
