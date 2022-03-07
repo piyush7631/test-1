@@ -11,6 +11,8 @@ export class ProjectsComponent implements OnInit {
 
   projects: Project[] = []
   newProject: Project = new Project();
+  editProject: Project = new Project();
+  editProjectIndex = 0;
   constructor(private service: ProjectsService) { }
 
   ngOnInit(): void {
@@ -43,6 +45,26 @@ export class ProjectsComponent implements OnInit {
 
         },
         (error) => { console.log(error) }
+      )
+  }
+
+  onEditClicked(event: any, index: number) {
+    this.editProjectIndex = index;
+    let selectedProject: Project = this.projects[index];
+    this.editProject = selectedProject;
+  }
+
+  onUpdate() {
+    this.service.updateProject(this.editProject)
+      .subscribe(
+        (response) => {
+          this.projects[this.editProjectIndex] = response;
+
+          this.editProject = new Project();
+        },
+        (error) => {
+          console.log(error)
+        },
       )
   }
 
