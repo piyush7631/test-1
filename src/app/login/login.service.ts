@@ -22,6 +22,8 @@ export class LoginService {
           (user: any) => {
 
             this.currentUser = user.userName;
+            sessionStorage.currentUser 
+            = JSON.stringify(user);
           }
         ))
       )
@@ -37,6 +39,7 @@ export class LoginService {
   }
 
   logoutUser() {
+    sessionStorage.removeItem("currentUser")
     this.currentUser = null;
   }
 }
