@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { LoginComponent } from './login/login.component';
 import { JwtinterceptorService } from './interceptors/jwtinterceptor.service';
+import { JwtUnauthorizedInterceptorService } from './interceptors/jwt-unauthorized-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,11 @@ import { JwtinterceptorService } from './interceptors/jwtinterceptor.service';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtinterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtUnauthorizedInterceptorService,
       multi: true
     }
   ],

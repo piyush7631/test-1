@@ -29,10 +29,6 @@ export class ProjectsComponent implements OnInit {
         (response) => {
           this.projects = response;
           console.log(this.projects)
-        },
-        (error) => {
-          console.log(error)
-          alert('Authentication Error')
         }
       )
   }
