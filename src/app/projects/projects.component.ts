@@ -32,6 +32,7 @@ export class ProjectsComponent implements OnInit {
         },
         (error) => {
           console.log(error)
+          alert('Authentication Error')
         }
       )
   }

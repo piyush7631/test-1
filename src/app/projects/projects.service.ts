@@ -13,17 +13,10 @@ export class ProjectsService {
   constructor(private http: HttpClient) { }
 
   getProjects(): Observable<Project[]> {
-    let currentUser = { token: "" }
-    let header = new HttpHeaders();
-    header.set('Authorization', 'Bearer ');
-
-    if (sessionStorage.currentUser != null) {
-      currentUser = JSON.parse(sessionStorage.currentUser);
-      header = header.set("Authorization", "Bearer " + currentUser.token);
-    }
 
 
-    return this.http.get<Project[]>(this.url, { headers: header })
+
+    return this.http.get<Project[]>(this.url)
       .pipe(
         map(
           (data: Project[]) => {
@@ -38,55 +31,26 @@ export class ProjectsService {
   }
 
   createProject(project: Project): Observable<Project> {
-    let currentUser = { token: "" }
-    let header = new HttpHeaders();
-    header.set('Authorization', 'Bearer ');
 
-    if (sessionStorage.currentUser != null) {
-      currentUser = JSON.parse(sessionStorage.currentUser);
-      header = header.set("Authorization", "Bearer " + currentUser.token);
-    }
 
-    return this.http.post<Project>(this.url, project, { headers: header });
+    return this.http.post<Project>(this.url, project);
   }
 
   updateProject(existingProject: Project): Observable<Project> {
 
-    let currentUser = { token: "" }
-    let header = new HttpHeaders();
-    header.set('Authorization', 'Bearer ');
 
-    if (sessionStorage.currentUser != null) {
-      currentUser = JSON.parse(sessionStorage.currentUser);
-      header = header.set("Authorization", "Bearer " + currentUser.token);
-    }
-
-    return this.http.put<Project>(this.url, existingProject, { headers: header });
+    return this.http.put<Project>(this.url, existingProject);
   }
 
   deleteProject(projectId: number): Observable<Project> {
-    let currentUser = { token: "" }
-    let header = new HttpHeaders();
-    header.set('Authorization', 'Bearer ');
 
-    if (sessionStorage.currentUser != null) {
-      currentUser = JSON.parse(sessionStorage.currentUser);
-      header = header.set("Authorization", "Bearer " + currentUser.token);
-    }
 
-    return this.http.delete<Project>(this.url + '?ProjectID=' + projectId, { headers: header });
+    return this.http.delete<Project>(this.url + '?ProjectID=' + projectId);
   }
 
   searchProject(searchBy: string, searchText: string): Observable<Project[]> {
-    let currentUser = { token: "" }
-    let header = new HttpHeaders();
-    header.set('Authorization', 'Bearer ');
 
-    if (sessionStorage.currentUser != null) {
-      currentUser = JSON.parse(sessionStorage.currentUser);
-      header = header.set("Authorization", "Bearer " + currentUser.token);
-    }
 
-    return this.http.get<Project[]>(`${this.url}/search/${searchBy}/${searchText}`, { headers: header });
+    return this.http.get<Project[]>(`${this.url}/search/${searchBy}/${searchText}`);
   }
 }
