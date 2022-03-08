@@ -13,6 +13,10 @@ export class ProjectsComponent implements OnInit {
   newProject: Project = new Project();
   editProject: Project = new Project();
   editProjectIndex = 0;
+
+  deleteProject: Project = new Project();
+  deleteProjectIndex: number = 0;
+
   constructor(private service: ProjectsService) { }
 
   ngOnInit(): void {
@@ -68,6 +72,26 @@ export class ProjectsComponent implements OnInit {
       )
   }
 
+  onDeleteClicked(index: number) {
+    this.deleteProjectIndex = index;
+
+    this.deleteProject = { ...this.projects[index] }
+
+  }
+
+  onDeleteConfirmed() {
+    this.service.deleteProject(this.deleteProject.projectID)
+      .subscribe(
+        (response) => {
+          this.projects.splice(this.deleteProjectIndex, 1);
+        },
+        (error) => {
+          console.log(error)
+        },
+
+
+      )
+  }
 
 
 }
