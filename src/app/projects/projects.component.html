@@ -103,7 +103,7 @@
 </div>
 
 <!-- Create Project Modal -->
-<form #newProjectForm="ngForm">
+<form #newProjectForm="ngForm" novalidate="novalidate">
   <div class="modal" role="dialog" id="projectModal">
     <div class="modal-dialog">
       <div class="modal-content" style="width: 700px">
@@ -145,6 +145,17 @@
                       newProjectForm.submitted)
                 }"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  newProjectId.invalid &&
+                  (newProjectId.dirty ||
+                    newProjectId.touched ||
+                    newProjectForm.submitted) &&
+                  newProjectId.errors?.required
+                "
+                >Project ID cannot be blank</span
+              >
             </div>
           </div>
 
