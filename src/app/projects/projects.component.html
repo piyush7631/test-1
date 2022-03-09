@@ -156,6 +156,17 @@
                 "
                 >Project ID cannot be blank</span
               >
+              <span
+                class="text-danger"
+                *ngIf="
+                  newProjectId.invalid &&
+                  (newProjectId.dirty ||
+                    newProjectId.touched ||
+                    newProjectForm.submitted) &&
+                  newProjectId.errors?.pattern
+                "
+                >Project ID should only contain numbers</span
+              >
             </div>
           </div>
 
