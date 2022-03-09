@@ -11,6 +11,8 @@ import { ClientLocationsService } from '../client-location/client-locations.serv
 })
 export class ProjectsComponent implements OnInit {
 
+  showLoading: boolean = true;
+
   projects: Project[] = []
   clientLocations: ClientLocation[] = []
   newProject: Project = new Project();
@@ -23,7 +25,7 @@ export class ProjectsComponent implements OnInit {
   searchBy: string = 'Porject ID'
   searchText: string = 'Search Text'
 
-  constructor(private service: ProjectsService,private clientLocationService:ClientLocationsService) { }
+  constructor(private service: ProjectsService, private clientLocationService: ClientLocationsService) { }
 
   ngOnInit(): void {
 
@@ -32,15 +34,18 @@ export class ProjectsComponent implements OnInit {
         (response) => {
           this.projects = response;
           console.log(this.projects)
+          this.showLoading = false;
         }
       )
 
-      this.clientLocationService.getClientLocations()
+    this.clientLocationService.getClientLocations()
       .subscribe(
-        (response)=>{
-          this.clientLocations=response
+        (response) => {
+          this.clientLocations = response
         }
       )
+
+
   }
 
   onSave() {
