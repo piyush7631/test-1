@@ -284,6 +284,7 @@
             >
             <div class="col-sm-8">
               <input
+                #newTeamSize="ngModel"
                 id="teamSize"
                 type="number"
                 style="width: 200px"
@@ -291,7 +292,33 @@
                 placeholder="Team Size"
                 name="teamSize"
                 [(ngModel)]="newProject.teamSize"
+                pattern="^[0-9]*$"
+                maxlength="7"
+                required="required"
+                [ngClass]="{
+                  'is-invalid':
+                    newTeamSize.invalid &&
+                    (newTeamSize.dirty ||
+                      newTeamSize.touched ||
+                      newProjectForm.submitted),
+                  'is-valid':
+                    newTeamSize.valid &&
+                    (newTeamSize.dirty ||
+                      newTeamSize.touched ||
+                      newProjectForm.submitted)
+                }"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  newTeamSize.invalid &&
+                  (newTeamSize.dirty ||
+                    newTeamSize.touched ||
+                    newProjectForm.submitted) &&
+                  newTeamSize.errors?.required
+                "
+                >Team Size cannot be blank</span
+              >
             </div>
           </div>
 
@@ -351,10 +378,24 @@
             >
             <div class="col-sm-8">
               <select
+                #newClientLocationID="ngModel"
                 name="clientLocation"
                 id="clientLocation"
                 class="form-control"
                 [(ngModel)]="newProject.clientLocationID"
+                required="required"
+                [ngClass]="{
+                  'is-invalid':
+                    newClientLocationID.invalid &&
+                    (newClientLocationID.dirty ||
+                      newClientLocationID.touched ||
+                      newProjectForm.submitted),
+                  'is-valid':
+                    newClientLocationID.valid &&
+                    (newClientLocationID.dirty ||
+                      newClientLocationID.touched ||
+                      newProjectForm.submitted)
+                }"
               >
                 <option value="null">Please Select</option>
                 <option
@@ -364,6 +405,17 @@
                   {{ clientLocation.clientLocationName }}
                 </option>
               </select>
+              <span
+                class="text-danger"
+                *ngIf="
+                  newClientLocationID.invalid &&
+                  (newClientLocationID.dirty ||
+                    newClientLocationID.touched ||
+                    newProjectForm.submitted) &&
+                  newClientLocationID.errors?.required
+                "
+                >Please Select the Client Location</span
+              >
             </div>
           </div>
         </div>
