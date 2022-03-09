@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from './project';
 import { ProjectsService } from './projects.service';
+import { ClientLocation } from './../client-location/client-location';
+import { ClientLocationsService } from '../client-location/client-locations.service';
 
 @Component({
   selector: 'app-projects',
@@ -10,6 +12,7 @@ import { ProjectsService } from './projects.service';
 export class ProjectsComponent implements OnInit {
 
   projects: Project[] = []
+  clientLocations: ClientLocation[] = []
   newProject: Project = new Project();
   editProject: Project = new Project();
   editProjectIndex = 0;
@@ -20,7 +23,7 @@ export class ProjectsComponent implements OnInit {
   searchBy: string = 'Porject ID'
   searchText: string = 'Search Text'
 
-  constructor(private service: ProjectsService) { }
+  constructor(private service: ProjectsService,private clientLocationService:ClientLocationsService) { }
 
   ngOnInit(): void {
 
@@ -29,6 +32,13 @@ export class ProjectsComponent implements OnInit {
         (response) => {
           this.projects = response;
           console.log(this.projects)
+        }
+      )
+
+      this.clientLocationService.getClientLocations()
+      .subscribe(
+        (response)=>{
+          this.clientLocations=response
         }
       )
   }
