@@ -183,6 +183,78 @@
               />
             </div>
           </div>
+
+          <div class="form-group row">
+            <label for="active" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              <div class="form-check">
+                <input
+                  id="checkActive"
+                  type="checkbox"
+                  style="width: 200px"
+                  value="true"
+                  class="form-check-input"
+                  name="checkActive"
+                  [(ngModel)]="newProject.active"
+                />
+                <label for="Active" class="form-check-label">Active</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="status" class="col-sm-4 col-form-label">Status</label>
+            <div class="col-sm-8">
+              <div class="form-check form-check-inline">
+                <input
+                  id="statusInForce"
+                  type="radio"
+                  value="In Force"
+                  class="form-check-input"
+                  name="radioStatus"
+                  [(ngModel)]="newProject.status"
+                />
+                <label for="ststusInForce" class="form-check-label"
+                  >In Force</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  id="statusSupport"
+                  type="radio"
+                  value="Support"
+                  class="form-check-input"
+                  name="radioStatus"
+                  [(ngModel)]="newProject.status"
+                />
+                <label for="ststusInForce" class="form-check-label"
+                  >Support</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="clientLocation" class="col-sm-4 col-form-label"
+              >Client Location</label
+            >
+            <div class="col-sm-8">
+              <select
+                name="clientLocation"
+                id="clientLocation"
+                class="form-control"
+                [(ngModel)]="newProject.clientLocationID"
+              >
+                <option value="null">Please Select</option>
+                <option
+                  *ngFor="let clientLocation of clientLocations"
+                  [value]="clientLocation.clientLocationID"
+                >
+                  {{ clientLocation.clientLocationName }}
+                </option>
+              </select>
+            </div>
+          </div>
         </div>
 
         <div class="modal-footer">
@@ -281,6 +353,78 @@
                 name="teamSize"
                 [(ngModel)]="editProject.teamSize"
               />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="active" class="col-sm-4 col-form-label"></label>
+            <div class="col-sm-8">
+              <div class="form-check">
+                <input
+                  id="checkActive"
+                  type="checkbox"
+                  style="width: 200px"
+                  value="true"
+                  class="form-check-input"
+                  name="checkActive"
+                  [(ngModel)]="editProject.active"
+                />
+                <label for="Active" class="form-check-label">Active</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="status" class="col-sm-4 col-form-label">Status</label>
+            <div class="col-sm-8">
+              <div class="form-check form-check-inline">
+                <input
+                  id="statusInForce"
+                  type="radio"
+                  value="In Force"
+                  class="form-check-input"
+                  name="radioStatus"
+                  [(ngModel)]="editProject.status"
+                />
+                <label for="ststusInForce" class="form-check-label"
+                  >In Force</label
+                >
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  id="statusSupport"
+                  type="radio"
+                  value="Support"
+                  class="form-check-input"
+                  name="radioStatus"
+                  [(ngModel)]="editProject.status"
+                />
+                <label for="ststusInForce" class="form-check-label"
+                  >Support</label
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="clientLocation" class="col-sm-4 col-form-label"
+              >Client Location</label
+            >
+            <div class="col-sm-8">
+              <select
+                name="clientLocation"
+                id="clientLocation"
+                class="form-control"
+                [(ngModel)]="editProject.clientLocationID"
+              >
+                <option value="null">Please Select</option>
+                <option
+                  *ngFor="let clientLocation of clientLocations"
+                  [value]="clientLocation.clientLocationID"
+                >
+                  {{ clientLocation.clientLocationName }}
+                </option>
+              </select>
             </div>
           </div>
         </div>
