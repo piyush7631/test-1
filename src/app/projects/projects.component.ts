@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Project } from './project';
 import { ProjectsService } from './projects.service';
 import { ClientLocation } from './../client-location/client-location';
 import { ClientLocationsService } from '../client-location/client-locations.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-projects',
@@ -25,6 +26,8 @@ export class ProjectsComponent implements OnInit {
   searchBy: string = 'Porject ID'
   searchText: string = 'Search Text'
 
+  @ViewChild("newProjectForm") newProjectForm: NgForm | any = null;
+
   constructor(private service: ProjectsService, private clientLocationService: ClientLocationsService) { }
 
   ngOnInit(): void {
@@ -46,6 +49,10 @@ export class ProjectsComponent implements OnInit {
       )
 
 
+  }
+
+  onCreateProjectClicked() {
+    this.newProjectForm.resetForm();
   }
 
   onSave() {
